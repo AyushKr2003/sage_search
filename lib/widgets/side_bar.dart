@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sage_search/pages/home_page.dart';
 
 import '../theme/colors.dart';
 import '../widgets/side_bar_button.dart';
@@ -57,11 +58,18 @@ class _SideBarState extends State<SideBar> {
               const SizedBox(
                 height: 4,
               ),
-              SideBarButton(
-                isColapsed: isColapsed,
-                icon: Icons.home,
-                text: "Home",
-                isActive: true,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                      (route) => true);
+                },
+                child: SideBarButton(
+                  isColapsed: isColapsed,
+                  icon: Icons.home,
+                  text: "Home",
+                  isActive: true,
+                ),
               ),
               SideBarButton(
                 isColapsed: isColapsed,
@@ -100,14 +108,14 @@ class _SideBarState extends State<SideBar> {
                     isColapsed
                         ? Icons.keyboard_arrow_right
                         : Icons.keyboard_arrow_left,
-                    color: MyColors.white,
+                    color: MyColors.white70,
                     size: 22,
                   ),
                   if (!isColapsed)
                     Text(
                       'Collapse',
                       style: GoogleFonts.ibmPlexMono(
-                        color: MyColors.white,
+                        color: MyColors.white70,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sage_search/pages/chat_page.dart';
+import 'package:sage_search/services/web_socket_service.dart';
 
 import '../theme/colors.dart';
 import 'search_bar_button.dart';
@@ -15,6 +17,12 @@ class _SearchSectionState extends State<SearchSection> {
   TextEditingController searchController = TextEditingController();
 
   @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
@@ -28,7 +36,7 @@ class _SearchSectionState extends State<SearchSection> {
               fontWeight: FontWeight.w500,
               height: 1.2,
               letterSpacing: -0.8,
-              color: MyColors.white.withValues(alpha: 0.9),
+              color: MyColors.white70.withValues(alpha: 0.9),
             ),
           ),
           const SizedBox(height: 16),
@@ -37,7 +45,7 @@ class _SearchSectionState extends State<SearchSection> {
             style: GoogleFonts.ibmPlexMono(
               fontSize: 16,
               fontWeight: FontWeight.w300,
-              color: MyColors.white.withValues(alpha: 0.5),
+              color: MyColors.white70.withValues(alpha: 0.5),
             ),
           ),
           const SizedBox(height: 40),
@@ -117,7 +125,15 @@ class _SearchSectionState extends State<SearchSection> {
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            ChatWebSocket().chat(searchController.text);
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ChatPage(
+                                    question: searchController.text.trim()),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,

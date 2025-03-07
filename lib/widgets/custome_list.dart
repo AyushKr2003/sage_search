@@ -23,7 +23,7 @@ class CustomeList extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: MyColors.white,
+                color: MyColors.white70,
               ),
             ),
           ),
@@ -45,7 +45,7 @@ class CustomeList extends StatelessWidget {
                   child: Text(
                     listItems[index],
                     style: GoogleFonts.roboto(
-                      color: MyColors.white,
+                      color: MyColors.white70,
                     ),
                   ),
                 ),

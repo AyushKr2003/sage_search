@@ -48,7 +48,7 @@ class TopBar extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.person,
-                  color: MyColors.white,
+                  color: MyColors.white70,
                 ),
               )
             ],

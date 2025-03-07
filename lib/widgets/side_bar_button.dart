@@ -34,7 +34,7 @@ class SideBarButton extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
             child: Icon(
               icon,
-              color: MyColors.white,
+              color: MyColors.white70,
               size: 22,
             ),
           ),

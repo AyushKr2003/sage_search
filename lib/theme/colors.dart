@@ -19,5 +19,6 @@ class MyColors {
   static const searchBar = Color(0xFF243647);
   static const searchText = Color(0xFF94ADC7);
   static const inText = Color(0xFFE5E8EB);
-  static const white = Color(0xFFFFFFFF);
+  static const white70 = Colors.white70;
+  static const white = Colors.white;
 }
