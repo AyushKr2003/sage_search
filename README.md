@@ -14,16 +14,16 @@
   </p>
   
   <p>
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/AyushKr2003/sage_search_frontend?style=for-the-badge">
-    <img alt="GitHub forks" src="https://img.shields.io/github/forks/AyushKr2003/sage_search_frontend?style=for-the-badge">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues/AyushKr2003/sage_search_frontend?style=for-the-badge">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/AyushKr2003/sage_search?style=for-the-badge">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/AyushKr2003/sage_search?style=for-the-badge">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/AyushKr2003/sage_search?style=for-the-badge">
     <img alt="License" src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
   </p>
 </div>
 
 ## 📋 Overview
 
-SageSearch is a sophisticated search interface built with Flutter that transforms how users discover information online. It intelligently retrieves, analyzes, and synthesizes content from multiple web sources, delivering comprehensive AI-enhanced responses to user queries while maintaining source attribution.
+SageSearch is a sophisticated search platform built with Flutter and FastAPI that transforms how users discover information online. It intelligently retrieves, analyzes, and synthesizes content from multiple web sources, delivering comprehensive AI-enhanced responses to user queries while maintaining source attribution.
 
 <div align="center">
   <!-- Consider adding a screenshot here -->
@@ -32,14 +32,19 @@ SageSearch is a sophisticated search interface built with Flutter that transform
 
 ## ✨ Features
 
+### Frontend
 - 🎯 **Intuitive Interface** - Clean, modern UI with focus on content and readability
 - 📱 **Fully Responsive** - Seamless experience across desktop, tablet, and mobile devices
-- 🔍 **Advanced Search** - Powerful query processing with semantic understanding
 - 💡 **Smart Suggestions** - Contextual search suggestions and history tracking
 - 🎨 **Customizable Theme** - Dark mode support with elegant color scheme
 - ⚡ **Performance Optimized** - Fast loading times and smooth animations
-- 🔄 **Real-time Updates** - WebSocket support for streaming responses
-- 🌐 **API Integration** - RESTful endpoints for easy backend communication
+
+### Backend
+- 🔍 **Intelligent Web Search** - Leverages Tavily API for accurate and relevant search results
+- 🧠 **Smart Source Ranking** - Uses sentence transformers to prioritize the most relevant sources
+- 🤖 **AI-Powered Responses** - Generates comprehensive answers using Google Gemini
+- 🔄 **Real-time Communication** - WebSocket support for streaming responses
+- 🌐 **RESTful API** - Clean and well-documented endpoints for easy integration
 
 ## 🎬 Demo
 
@@ -54,36 +59,40 @@ SageSearch is a sophisticated search interface built with Flutter that transform
   <img src="assets/resultPage.png" alt="SageSearch Result Page" width="800">
 </div>
 
-Check out our [live demo](https://sagesearchai.netlify.app/) to see SageSearch in action.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
+#### Frontend
 - Flutter SDK (latest version)
 - Dart SDK (latest version)
 - A code editor (VS Code, Android Studio, or IntelliJ IDEA)
 
+#### Backend
+- Python 3.8+
+- [Tavily API key](https://tavily.com/) - For web search capabilities
+- [Google Gemini API key](https://ai.google.dev/) - For AI response generation
+
 ### Installation
+
+#### Frontend
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/AyushKr2003/sage_search_frontend.git
+   git clone https://github.com/AyushKr2003/sage_search.git
+   cd sage_search
    ```
 
-2. **Navigate to the project directory**
+2. **Install dependencies**
    ```bash
-   cd sage_search_frontend
-   ```
-
-3. **Install dependencies**
-   ```bash
+   cd frontend
    flutter pub get
    ```
 
-4. **Environment Setup**
+3. **Environment Setup**
    
-   Create a `.env` file in the root directory based on the provided example:
+   Create a `.env` file in the frontend directory based on the provided example:
    ```bash
    copy .env.example .env
    ```
@@ -93,10 +102,47 @@ Check out our [live demo](https://sagesearchai.netlify.app/) to see SageSearch i
    BACKEND_URL='ws://localhost:8000/ws/chats'
    ```
 
-5. **Run the application**
+4. **Run the application**
    ```bash
    flutter run
    ```
+
+#### Backend
+
+1. **Navigate to the backend directory**
+   ```bash
+   cd backend
+   ```
+
+2. **Set up the environment**
+   ```bash
+   # Create and activate virtual environment
+   python -m venv venv
+   .\venv\Scripts\activate
+
+   # Install dependencies
+   pip install -r requirements.txt
+
+   # Configure environment variables
+   copy .env.example .env
+   ```
+
+   Edit the `.env` file with your API keys:
+   ```
+   TAVILY_API_KEY=your_tavily_api_key
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+3. **Run the server**
+   ```bash
+   # Development mode with auto-reload
+   uvicorn main:app --reload
+
+   # Production mode
+   uvicorn main:app --host 0.0.0.0 --port 8000
+   ```
+
+   The server will be available at `http://localhost:8000`
 
 ## 📖 Usage
 
@@ -109,25 +155,70 @@ SageSearch provides an intuitive interface for searching and discovering informa
 
 ## 🏗️ Architecture
 
+### Project Structure
+
 ```
-sage_search_frontend/
+sage_search/
+
 ├── lib/
 │   ├── constant/
-│   │   └── const.dart           # Application constants and configuration
+│   │   └── const.dart               # Application constants and configuration
 │   ├── pages/ 
-│   │   └── home_page.dart       # Main application interface
+│   │   └── home_page.dart           # Main application interface
 │   ├── theme/ 
-│   │   └── colors.dart          # Theme definitions and styling
-│   ├── widgets/ 
-│   │   ├── custome_list.dart    # Reusable list component
-│   │   ├── search_section.dart  # Search interface component
-│   │   ├── side_bar.dart        # Navigation sidebar
-│   │   ├── side_bar_button.dart # Interactive sidebar elements
-│   │   └── top_bar.dart         # Application header component
-│   ├── services/                # API and data services
-│   ├── models/                  # Data models and state management
-│   └── utils/                   # Helper functions and utilities
-└── main.dart                    # Application entry point
+│   │   └── colors.dart              # Theme definitions and styling
+│   ├── widgets/     
+│   │   ├── custome_list.dart        # Reusable list component
+│   │   ├── search_section.dart      # Search interface component
+│   │   ├── side_bar.dart            # Navigation sidebar
+│   │   ├── side_bar_button.dart     # Interactive sidebar elements
+│   │   └── top_bar.dart             # Application header component
+│   ├── services/                    
+│   │   └── web_socket_service.dart  # API and data services
+│   └──  main.dart                   # Application entry point
+│
+├── server/
+│   ├── main.py                      # FastAPI application and endpoints
+│   ├── config.py                    # Configuration settings
+│   ├── services/
+│   │   ├── search_service.py        # Tavily API integration
+│   │   ├── sort_sorce_service.py    # Source ranking
+│   │   └── llm_service.py           # Gemini AI integration
+│   ├── pydantic_model/
+│   │   └── chat_body.py             # Request/Response models
+│   ├── tests/                       # Unit and integration tests
+│   └── requirements.txt             # Project dependencies
+```
+
+### API Reference
+
+#### REST Endpoints
+
+```
+POST /chats
+```
+
+Request body:
+```json
+{
+  "query": "What are the latest developments in quantum computing?"
+}
+```
+
+#### WebSocket
+
+Connect to `/ws/chats` to receive streaming responses.
+
+Example client usage:
+```javascript
+const ws = new WebSocket('ws://localhost:8000/ws/chats');
+ws.onopen = () => {
+  ws.send(JSON.stringify({ query: "What are the latest developments in quantum computing?" }));
+};
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log(data);
+};
 ```
 
 ## 🤝 Contributing
@@ -140,7 +231,7 @@ Contributions are what make the open-source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-See the [open issues](https://github.com/AyushKr2003/sage_search_frontend/issues) for a list of proposed features and known issues.
+See the [open issues](https://github.com/AyushKr2003/sage_search/issues) for a list of proposed features and known issues.
 
 ## 📄 License
 
@@ -148,10 +239,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👏 Acknowledgments
 
+### Frontend
 - [Flutter](https://flutter.dev/) - UI toolkit for building natively compiled applications
 - [Google Fonts](https://fonts.google.com/) - Beautiful typography
 - [Material Design](https://material.io/) - Design system and components
-- All [contributors](https://github.com/AyushKr2003/sage_search_frontend/graphs/contributors) who have helped shape SageSearch
+
+### Backend
+- [Tavily API](https://tavily.com/) - For search capabilities
+- [Google Gemini](https://ai.google.dev/) - For AI response generation
+- [FastAPI](https://fastapi.tiangolo.com/) - For the web framework
+- [Sentence Transformers](https://www.sbert.net/) - For source ranking
+
+### Team
+- All [contributors](https://github.com/AyushKr2003/sage_search/graphs/contributors) who have helped shape SageSearch
 
 ---
 
