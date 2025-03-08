@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/app_icon_bg.png" alt="SageSearch Logo" width="150" style="background-color: white; padding: 10px; border-radius: 10px;">
+  <img src="assets/app_icon.png" alt="SageSearch Logo" width="150" style="background-color: white; padding: 10px; border-radius: 10px;">
   <h1>SageSearch</h1>
   <p><strong>Intelligent web search and information synthesis platform</strong></p>
   
