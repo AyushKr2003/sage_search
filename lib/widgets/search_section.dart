@@ -126,6 +126,7 @@ class _SearchSectionState extends State<SearchSection> {
                         ),
                         child: ElevatedButton(
                           onPressed: () {
+                            // ChatWebSocket().connect();
                             ChatWebSocket().chat(searchController.text);
                             Navigator.of(context).push(
                               MaterialPageRoute(

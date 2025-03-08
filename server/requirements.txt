@@ -1,0 +1,8 @@
+tavily-python
+pydantic_settings
+fastapi[standard]
+trafilatura
+sentence_transformers
+numpy
+google-generativeai
+google-genai

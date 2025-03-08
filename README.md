@@ -17,7 +17,7 @@
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/AyushKr2003/sage_search_frontend?style=for-the-badge">
     <img alt="GitHub forks" src="https://img.shields.io/github/forks/AyushKr2003/sage_search_frontend?style=for-the-badge">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/AyushKr2003/sage_search_frontend?style=for-the-badge">
-    <img alt="License" src="https://img.shields.io/github/license/AyushKr2003/sage_search_frontend?style=for-the-badge">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
   </p>
 </div>
 
@@ -38,13 +38,23 @@ SageSearch is a sophisticated search interface built with Flutter that transform
 - 💡 **Smart Suggestions** - Contextual search suggestions and history tracking
 - 🎨 **Customizable Theme** - Dark mode support with elegant color scheme
 - ⚡ **Performance Optimized** - Fast loading times and smooth animations
-- 🔄 **Real-time Updates** - WebSocket support for streaming search responses
+- 🔄 **Real-time Updates** - WebSocket support for streaming responses
 - 🌐 **API Integration** - RESTful endpoints for easy backend communication
 
 ## 🎬 Demo
 
-<!-- Consider adding a GIF or link to video demo -->
-Check out our [live demo](https://github.com/AyushKr2003/sage_search_frontend) to see SageSearch in action.
+<div align="center">
+  <h3>Home Page</h3>
+  <img src="assets/homePage.png" alt="SageSearch Home Page" width="800">
+  
+  <h3>Loading Page</h3>
+  <img src="assets/loadingPage.png" alt="SageSearch Loading Page" width="800">
+  
+  <h3>Result Page</h3>
+  <img src="assets/resultPage.png" alt="SageSearch Result Page" width="800">
+</div>
+
+Check out our [live demo](https://sagesearchai.netlify.app/) to see SageSearch in action.
 
 ## 🚀 Getting Started
 
@@ -71,7 +81,19 @@ Check out our [live demo](https://github.com/AyushKr2003/sage_search_frontend) t
    flutter pub get
    ```
 
-4. **Run the application**
+4. **Environment Setup**
+   
+   Create a `.env` file in the root directory based on the provided example:
+   ```bash
+   copy .env.example .env
+   ```
+   
+   Then update the values in `.env` with your configuration:
+   ```
+   BACKEND_URL='ws://localhost:8000/ws/chats'
+   ```
+
+5. **Run the application**
    ```bash
    flutter run
    ```
